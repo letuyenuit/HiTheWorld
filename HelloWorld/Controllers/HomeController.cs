@@ -17,7 +17,7 @@ public class HomeController : Controller
     public IActionResult Index(string userInput)
     {
         // Truyền trực tiếp input người dùng không encode
-        ViewData["Message"] = $"Hello, {userInput}";
+        ViewData["Message"] = $"Hello there, {userInput}";
 
         // Thêm một trường hợp nguy hiểm khác
         ViewBag.RawUserInput = userInput;
