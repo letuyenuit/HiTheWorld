@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-                echo "${env.GIT_BRANCH}"
+                echo "${env.GIT_BRANCH} <3"
             }
         }
     }
